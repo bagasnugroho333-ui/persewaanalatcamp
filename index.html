@@ -10,7 +10,7 @@
     <style>
         /* --- Kustomisasi CSS --- */
         :root {
-            --primary-yellow: #eab308; /* Warna Kuning Emas dari desain */
+            --primary-yellow: #eab308;
             --dark-bg: #111111;
         }
 
@@ -92,7 +92,7 @@
             margin-bottom: 15px;
         }
         .btn-search {
-            background-color: #28a745; /* Hijau seperti di gambar */
+            background-color: #28a745;
             color: white;
             font-weight: bold;
             width: 100%;
@@ -108,12 +108,12 @@
         #best-deals-section {
             padding: 60px 0;
         }
-        /* Agar gambar produk di slider ukurannya konsisten */
         #slider-image {
             max-height: 350px; 
             width: auto;
             max-width: 100%;
-            object-fit: contain; /* Menjaga proporsi gambar agar tidak gepeng */
+            object-fit: contain;
+            transition: opacity 0.3s ease-in-out;
         }
 
         .slider-controls .btn {
@@ -162,7 +162,6 @@
         .journey-flow img.main-stove {
             max-width: 100%;
             height: auto;
-            /* Tambahan agar gambar story terlihat bagus */
             max-height: 300px;
             object-fit: cover;
         }
@@ -170,7 +169,6 @@
             width: 80px;
             height: auto;
         }
-        /* Simple Arrows Visualization */
         .arrow-connector {
             font-size: 3rem;
             color: var(--primary-yellow);
@@ -194,7 +192,6 @@
             background-color: var(--dark-bg);
             color: #aaa;
             padding: 50px 0;
-            /* Placeholder for map background pattern */
             background-image: radial-gradient(circle at center, #222 1px, transparent 1px);
             background-size: 20px 20px;
         }
@@ -229,7 +226,6 @@
             margin-right: 10px;
         }
 
-        /* Responsive adjustments */
         @media (max-width: 768px) {
             .header-slant { width: 100%; clip-path: none; height: 70px; }
             .navbar-brand { margin-left: 20px; }
@@ -237,7 +233,7 @@
             .hero-badge { position: relative; margin: 0 auto 20px; top: 0; left: 0; }
             .reservation-box { margin-top: 30px; }
             .arrow-connector { transform: rotate(90deg); margin: 20px 0; }
-            #slider-image { max-height: 250px; } /* Perkecil sedikit di HP */
+            #slider-image { max-height: 250px; }
         }
     </style>
 </head>
@@ -269,10 +265,10 @@
                     <h2 class="hero-title mb-3">Reservasi Kompor Online Tersedia</h2>
                     <h3 class="hero-highlight mb-4">Hemat hingga 40% untuk Petualangan Camping Anda Berikutnya!</h3>
                     
-                    <img src="hero-kompor-utama.png" alt="Suasana memasak camping di hutan dengan kompor portable" class="img-fluid rounded shadow-lg mb-4">
+                    <img src="hero-kompor-utama.png" alt="Suasana memasak camping" class="img-fluid rounded shadow-lg mb-4">
                     
                     <p class="text-muted">
-                        Nikmati kemudahan memasak di alam terbuka tanpa ribet. Kami menyediakan berbagai jenis kompor portable berkualitas tinggi yang siap menemani perjalanan camping Anda. Praktis, aman, dan hemat bahan bakar. Pesan sekarang dan buat pengalaman camping Anda tak terlupakan.
+                        Nikmati kemudahan memasak di alam terbuka tanpa ribet. Kami menyediakan berbagai jenis kompor portable berkualitas tinggi yang siap menemani perjalanan camping Anda.
                     </p>
                 </div>
 
@@ -308,14 +304,6 @@
                                     <input type="time" class="form-control" value="18:00">
                                 </div>
                             </div>
-                            <div class="mb-4">
-                                <label class="form-label small">Jenis Kompor</label>
-                                <select class="form-select">
-                                    <option selected>Semua Jenis</option>
-                                    <option>Ultralight (Solo)</option>
-                                    <option>Portable Gas (Keluarga)</option>
-                                </select>
-                            </div>
                             <button type="button" class="btn btn-search" id="btnSearchNow">Cari Sekarang</button>
                         </form>
                     </div>
@@ -345,9 +333,9 @@
                     </div>
                     <h3 class="fw-bold" style="color: var(--dark-bg);" id="slider-title">Nama Produk</h3>
                     <p class="deal-price mb-3">
-                        <span id="slider-price">Rp 0</span> <span class="text-muted small" style="color: #666 !important;">/ Hari</span>
+                        <span id="slider-price">Rp 0</span> <span class="text-muted small">/ Hari</span>
                     </p>
-                    <p class="text-muted" id="slider-desc">Deskripsi produk akan muncul di sini.</p>
+                    <p class="text-muted" id="slider-desc">Deskripsi produk.</p>
                     <button class="btn btn-warning mt-3 fw-bold">Sewa Unit Ini</button>
                 </div>
             </div>
@@ -358,27 +346,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle shadow-sm">
-                        <i class="fas fa-search"></i>
-                    </div>
+                    <div class="step-circle shadow-sm"><i class="fas fa-search"></i></div>
                     <h5 class="step-title">1. PILIH ALAT</h5>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle shadow-sm">
-                        <i class="fas fa-calendar-check"></i>
-                    </div>
+                    <div class="step-circle shadow-sm"><i class="fas fa-calendar-check"></i></div>
                     <h5 class="step-title">2. PESAN ONLINE</h5>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle shadow-sm">
-                        <i class="fas fa-route"></i>
-                    </div>
+                    <div class="step-circle shadow-sm"><i class="fas fa-route"></i></div>
                     <h5 class="step-title">3. AMBIL / ANTAR</h5>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle shadow-sm">
-                        <i class="fas fa-mountain-sun"></i>
-                    </div>
+                    <div class="step-circle shadow-sm"><i class="fas fa-mountain-sun"></i></div>
                     <h5 class="step-title">4. NIKMATI CAMPING</h5>
                 </div>
             </div>
@@ -411,8 +391,10 @@
                     <i class="fas fa-chevron-right"></i>
                 </div>
                 <div class="col-md-4 text-center mb-3">
-                    <img src="story-memasak-gunung.png" alt="Seseorang memasak di gunung dengan pemandangan danau" class="main-stove rounded shadow">
-                     <p class="mt-3 fw-bold text-primary">Momen Terbaik: Makan Hangat dengan Pemandangan</p>
+                    
+                    <img src="story-memasak-gunung.png" alt="Seseorang memasak di gunung" class="main-stove rounded shadow">
+                    
+                     <p class="mt-3 fw-bold text-primary">Momen Terbaik: Makan Hangat</p>
                 </div>
                  <div class="col-md-2 text-center arrow-connector">
                     <i class="fas fa-chevron-right"></i>
@@ -420,7 +402,7 @@
                  <div class="col-md-2 text-center mb-3">
                     <div class="journey-icon">
                          <i class="fas fa-tent fa-3x text-muted"></i>
-                         <p class="mt-2 fw-bold">Istirahat Nyaman</p>
+                         <p class="mt-2 fw-bold">Camping Bahagia</p>
                     </div>
                 </div>
             </div>
@@ -435,35 +417,26 @@
                     <h5>ALAMAT KAMI</h5>
                     <p class="small">
                         <i class="fas fa-map-marker-alt text-warning me-2"></i> Basecamp CampFire Gear,<br>
-                        Jl. Petualang No. 123, Jakarta Selatan, Indonesia.
-                    </p>
-                    <p class="small">
-                        <i class="fas fa-phone text-warning me-2"></i> +62 812 3456 7890<br>
-                        <i class="fas fa-envelope text-warning me-2"></i> sewa@campfiregear.id
+                        Jl. Petualang No. 123, Jakarta Selatan.
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>LAYANAN</h5>
                     <ul class="list-unstyled small">
-                        <li><a href="#">Sewa Kompor Harian</a></li>
-                        <li><a href="#">Paket Camping Mingguan</a></li>
-                        <li><a href="#">Layanan Antar Jemput Alat</a></li>
-                        <li><a href="#">Konsultasi Gear</a></li>
+                        <li><a href="#">Sewa Harian</a></li>
+                        <li><a href="#">Paket Mingguan</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
-                    <h5>TAUTAN CEPAT</h5>
+                    <h5>TAUTAN</h5>
                     <ul class="list-unstyled small">
                         <li><a href="#">Beranda</a></li>
-                        <li><a href="#">Tentang Kami</a></li>
-                        <li><a href="#best-deals-section">Katalog Alat</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#best-deals-section">Produk</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4 text-md-end">
-                    <span class="footer-logo d-block mb-3">CAMPFIRE GEAR</span>
+                    <span class="footer-logo d-block mb-3">CAMPFIRE</span>
                     <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-whatsapp"></i></a>
                     </div>
@@ -472,93 +445,64 @@
         </div>
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // --- 1. FUNGSI SLIDER PRODUK ("Best Deals") ---
-
-        // Data Produk Kompor (Diupdate dengan Nama File Gambar Lokal Anda)
+        // DATA PRODUK (Semua Format PNG)
         const products = [
             {
                 category: "ULTRALIGHT GEAR (SOLO)",
                 title: "Paket Kompor JetPower Ultralight",
                 price: "Rp 35.000",
-                description: "Sangat ringan dan ringkas. Ideal untuk pendaki solo atau berdua yang mengutamakan kecepatan dan efisiensi packing. Menggunakan gas canister ulir (lindal valve).",
-                // GAMBAR PRODUK 1 DIUBAH DISINI (Image 3)
+                description: "Sangat ringan dan ringkas. Ideal untuk pendaki solo.",
+                // 3. GAMBAR PRODUK 1 (.png)
                 image: "produk-ultralight-stove.png" 
             },
             {
                 category: "FAMILY / GROUP CAMPING",
                 title: "Kompor Portable Gas Barron",
                 price: "Rp 50.000",
-                description: "Kompor model koper yang stabil dan mudah digunakan. Cocok untuk memasak dengan panci besar saat camping keluarga atau di area camping ground. Menggunakan gas kaleng hi-cook.",
-                // GAMBAR PRODUK 2 DIUBAH DISINI (Image 2)
+                description: "Kompor model koper yang stabil dan mudah digunakan.",
+                // 4. GAMBAR PRODUK 2 (.png)
                 image: "produk-family-stove.png" 
             }
         ];
 
         let currentSlideIndex = 0;
 
-        // Fungsi untuk memperbarui tampilan slider berdasarkan index saat ini
         function updateSlider() {
             const product = products[currentSlideIndex];
             const sliderImage = document.getElementById('slider-image');
-            
-            // Efek fade-out sederhana sebelum ganti gambar
             sliderImage.style.opacity = 0;
-
             setTimeout(() => {
                 sliderImage.src = product.image;
                 document.getElementById('slider-category').textContent = product.category;
                 document.getElementById('slider-title').textContent = product.title;
                 document.getElementById('slider-price').textContent = product.price;
                 document.getElementById('slider-desc').textContent = product.description;
-                // Efek fade-in
                 sliderImage.style.opacity = 1;
-            }, 200); // jeda 200ms agar transisi terasa halus
+            }, 200);
         }
-        
-        // Tambahkan transisi CSS ke gambar slider agar halus
-        document.getElementById('slider-image').style.transition = 'opacity 0.3s ease-in-out';
 
-
-        // Fungsi Tombol Berikutnya (Next)
         function nextSlide() {
             currentSlideIndex++;
-            if (currentSlideIndex >= products.length) {
-                currentSlideIndex = 0; // Kembali ke awal jika sudah di akhir
-            }
+            if (currentSlideIndex >= products.length) currentSlideIndex = 0;
             updateSlider();
         }
 
-        // Fungsi Tombol Sebelumnya (Prev)
         function prevSlide() {
             currentSlideIndex--;
-            if (currentSlideIndex < 0) {
-                currentSlideIndex = products.length - 1; // Ke akhir jika di awal
-            }
+            if (currentSlideIndex < 0) currentSlideIndex = products.length - 1;
             updateSlider();
         }
 
-        // Inisialisasi slider saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', updateSlider);
-
-
-        // --- 2. FUNGSI TOMBOL "Cari Sekarang" (Smooth Scroll) ---
-        
         document.getElementById('btnSearchNow').addEventListener('click', function() {
-            // Cari elemen target (bagian produk)
-            const targetSection = document.getElementById('best-deals-section');
-            if (targetSection) {
-                // Lakukan scroll halus ke elemen tersebut
-                targetSection.scrollIntoView({ 
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            document.getElementById('best-deals-section').scrollIntoView({ 
+                behavior: 'smooth', block: 'start'
+            });
         });
 
+        document.addEventListener('DOMContentLoaded', updateSlider);
     </script>
 </body>
 </html>
