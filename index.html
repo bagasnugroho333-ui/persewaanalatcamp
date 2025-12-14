@@ -19,6 +19,80 @@
             overflow-x: hidden;
         }
 
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
         /* Header Slanted Background */
         .header-slant {
             background-color: var(--dark-bg);
@@ -29,16 +103,23 @@
             height: 100px;
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
             z-index: -1;
+            animation: slideInLeft 0.8s ease-out;
         }
         
         .navbar-brand {
             font-weight: bold;
             color: white !important;
             font-size: 1.5rem;
+            animation: fadeInDown 0.6s ease-out;
         }
         .nav-link {
             color: #333 !important;
             font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-yellow) !important;
+            transform: translateY(-2px);
         }
 
         /* Hero Section */
@@ -48,29 +129,16 @@
             background: linear-gradient(to right, #f8f9fa, #e9ecef);
         }
 
-        .hero-badge {
-            background-color: var(--dark-bg);
-            color: white;
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-        }
-
         .hero-title {
             font-weight: 300;
             font-size: 2rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
         }
         .hero-highlight {
             color: var(--primary-yellow);
             font-weight: bold;
             font-size: 1.8rem;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
         }
 
         /* Hero Image */
@@ -81,6 +149,12 @@
             object-fit: cover;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: scaleIn 1s ease-out 0.6s both;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.02);
         }
 
         /* Reservation Form Box */
@@ -90,7 +164,15 @@
             padding: 25px;
             border-radius: 15px;
             position: relative;
+            animation: slideInRight 0.8s ease-out 0.4s both;
+            transition: transform 0.3s ease;
         }
+
+        .reservation-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
         .reservation-box h4 {
             border-bottom: 2px solid var(--primary-yellow);
             padding-bottom: 10px;
@@ -100,29 +182,43 @@
         .form-control, .form-select {
             border-radius: 5px;
             margin-bottom: 15px;
+            transition: all 0.3s ease;
         }
-        .btn-search {
-            background-color: #28a745;
+        .form-control:focus, .form-select:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(234, 179, 8, 0.3);
+        }
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
             font-weight: bold;
             width: 100%;
             border: none;
-            padding: 10px;
+            padding: 12px;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
         }
-        .btn-search:hover {
-            background-color: #218838;
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
             color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
 
         /* Best Deals Slider Section */
         #best-deals-section {
             padding: 60px 0;
         }
+
+        .section-title {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
         #slider-image {
             max-height: 400px; 
             width: 100%;
             object-fit: contain;
-            transition: opacity 0.3s ease-in-out;
+            transition: all 0.5s ease;
             background-color: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
@@ -132,9 +228,18 @@
             background-color: var(--primary-yellow);
             color: white;
             border: none;
-            border-radius: 0;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
             margin-left: 5px;
+            transition: all 0.3s ease;
         }
+
+        .slider-controls .btn:hover {
+            background-color: var(--dark-bg);
+            transform: scale(1.1);
+        }
+
         .deal-price {
             color: var(--primary-yellow);
             font-weight: bold;
@@ -157,38 +262,65 @@
             margin: 0 auto 20px;
             font-size: 2.5rem;
             color: var(--dark-bg);
+            transition: all 0.3s ease;
+            animation: scaleIn 0.6s ease-out;
         }
+
+        .step-circle:hover {
+            background-color: var(--dark-bg);
+            color: var(--primary-yellow);
+            transform: rotate(360deg) scale(1.1);
+        }
+
         .step-title {
             font-weight: bold;
             text-transform: uppercase;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        /* Story/Journey Section */
+        /* Story/Journey Section with Background Image */
         .story-section {
-            padding: 50px 0 100px;
+            padding: 80px 0 100px;
             text-align: center;
+            position: relative;
+            background-image: url('story-memasak-gunung.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
+
+        .story-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+
+        .story-section > .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .story-headline {
             margin-bottom: 50px;
+            animation: fadeInUp 0.8s ease-out;
         }
-        .journey-flow img.main-stove {
-            width: 100%;
-            height: auto;
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+
+        .journey-icon {
+            animation: float 3s ease-in-out infinite;
         }
-        .journey-icon img {
-            width: 80px;
-            height: auto;
-        }
+
         .arrow-connector {
             font-size: 3rem;
             color: var(--primary-yellow);
             display: flex;
             align-items: center;
             justify-content: center;
+            animation: pulse 2s ease-in-out infinite;
         }
 
         /* Footer */
@@ -219,9 +351,11 @@
         footer ul li a {
             color: #aaa;
             text-decoration: none;
+            transition: all 0.3s ease;
         }
         footer a:hover {
             color: var(--primary-yellow);
+            padding-left: 5px;
         }
         .footer-logo {
             color: white;
@@ -238,17 +372,37 @@
             line-height: 35px;
             border-radius: 50%;
             margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-yellow);
+            transform: translateY(-3px) rotate(360deg);
+        }
+
+        /* Scroll Animation */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .animate-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 768px) {
             .header-slant { width: 100%; clip-path: none; height: 70px; }
             .navbar-brand { margin-left: 20px; }
             .hero-section { text-align: center; }
-            .hero-badge { position: relative; margin: 0 auto 20px; top: 0; left: 0; }
             .reservation-box { margin-top: 30px; }
             .arrow-connector { transform: rotate(90deg); margin: 20px 0; }
             #slider-image { max-height: 250px; }
             .hero-image { max-height: 300px; }
+            .story-section {
+                background-attachment: scroll;
+            }
         }
     </style>
 </head>
@@ -277,14 +431,13 @@
         <div class="container position-relative">
             <div class="row align-items-center">
                 <div class="col-lg-7 mb-4 mb-lg-0 pe-lg-5">
-                    <div class="hero-badge">NOW!</div>
                     <h2 class="hero-title mb-3">Reservasi Kompor Online Tersedia</h2>
                     <h3 class="hero-highlight mb-4">Hemat hingga 40% untuk Petualangan Camping Anda Berikutnya!</h3>
                     
                     <!-- GAMBAR HERO (Image 1) -->
                     <img src="hero-kompor-utama.png" alt="Suasana memasak camping di gunung" class="hero-image mb-4">
                     
-                    <p class="text-muted">
+                    <p class="text-muted" style="animation: fadeInUp 0.8s ease-out 0.8s both;">
                         Nikmati kemudahan memasak di alam terbuka tanpa ribet. Kami menyediakan berbagai jenis kompor portable berkualitas tinggi yang siap menemani perjalanan camping Anda.
                     </p>
                 </div>
@@ -292,10 +445,10 @@
                 <div class="col-lg-5">
                     <div class="reservation-box shadow">
                         <h4><i class="fas fa-fire-burner me-2"></i>Cari Peralatan Masak</h4>
-                        <form>
+                        <form id="reservationForm">
                             <div class="mb-3">
                                 <label class="form-label small">Lokasi Pengambilan</label>
-                                <select class="form-select">
+                                <select class="form-select" id="location">
                                     <option selected>Pilih Lokasi (Basecamp Jakarta)</option>
                                     <option>Basecamp Bandung</option>
                                     <option>Basecamp Bogor</option>
@@ -304,25 +457,25 @@
                             <div class="row">
                                 <div class="col-6">
                                     <label class="form-label small">Tanggal Mulai</label>
-                                    <input type="date" class="form-control">
+                                    <input type="date" class="form-control" id="startDate">
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label small">Jam</label>
-                                    <input type="time" class="form-control" value="10:00">
+                                    <input type="time" class="form-control" value="10:00" id="startTime">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <label class="form-label small">Tanggal Selesai</label>
-                                    <input type="date" class="form-control">
+                                    <input type="date" class="form-control" id="endDate">
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label small">Jam</label>
-                                    <input type="time" class="form-control" value="18:00">
+                                    <input type="time" class="form-control" value="18:00" id="endTime">
                                 </div>
                             </div>
-                            <button type="button" class="btn btn-search" id="btnSearchNow">
-                                <i class="fas fa-search me-2"></i>Cari Sekarang
+                            <button type="button" class="btn btn-whatsapp" id="btnOrder">
+                                <i class="fab fa-whatsapp me-2"></i>Ayo Pesan
                             </button>
                         </form>
                     </div>
@@ -334,12 +487,12 @@
     <!-- BEST DEALS SECTION -->
     <section id="best-deals-section">
         <div class="container">
-            <div class="text-center mb-5">
+            <div class="text-center mb-5 section-title">
                 <h2 class="fw-bold">Pilihan <span class="text-primary">Terbaik</span> Kami</h2>
                 <p class="text-muted">Geser untuk melihat jenis kompor yang tersedia</p>
             </div>
 
-            <div class="row align-items-center" id="product-slider-container">
+            <div class="row align-items-center animate-on-scroll" id="product-slider-container">
                 <div class="col-md-6 mb-4 mb-md-0 text-center">
                     <!-- SLIDER IMAGE PRODUK (Image 3 & 4) -->
                     <img id="slider-image" src="produk-ultralight-stove.png" alt="Kompor" class="img-fluid rounded shadow-sm">
@@ -361,8 +514,8 @@
                         <span id="slider-price">Rp 0</span> <span class="text-muted small">/ Hari</span>
                     </p>
                     <p class="text-muted" id="slider-desc">Deskripsi produk.</p>
-                    <button class="btn btn-warning mt-3 fw-bold px-4">
-                        <i class="fas fa-shopping-cart me-2"></i>Sewa Unit Ini
+                    <button class="btn btn-warning mt-3 fw-bold px-4" onclick="orderProduct()">
+                        <i class="fab fa-whatsapp me-2"></i>Sewa Unit Ini
                     </button>
                 </div>
             </div>
@@ -372,24 +525,24 @@
     <!-- STEPS SECTION -->
     <section class="steps-section bg-light">
         <div class="container">
-            <h3 class="text-center mb-5 fw-bold">Cara <span class="text-primary">Mudah</span> Menyewa</h3>
+            <h3 class="text-center mb-5 fw-bold animate-on-scroll">Cara <span class="text-primary">Mudah</span> Menyewa</h3>
             <div class="row">
-                <div class="col-md-3 col-6 mb-4">
+                <div class="col-md-3 col-6 mb-4 animate-on-scroll">
                     <div class="step-circle shadow-sm"><i class="fas fa-search"></i></div>
                     <h5 class="step-title">1. PILIH ALAT</h5>
                     <p class="text-muted small">Cari kompor sesuai kebutuhan</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4">
+                <div class="col-md-3 col-6 mb-4 animate-on-scroll">
                     <div class="step-circle shadow-sm"><i class="fas fa-calendar-check"></i></div>
                     <h5 class="step-title">2. PESAN ONLINE</h5>
                     <p class="text-muted small">Booking mudah lewat website</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4">
+                <div class="col-md-3 col-6 mb-4 animate-on-scroll">
                     <div class="step-circle shadow-sm"><i class="fas fa-route"></i></div>
                     <h5 class="step-title">3. AMBIL / ANTAR</h5>
                     <p class="text-muted small">Pilih opsi yang Anda inginkan</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4">
+                <div class="col-md-3 col-6 mb-4 animate-on-scroll">
                     <div class="step-circle shadow-sm"><i class="fas fa-mountain-sun"></i></div>
                     <h5 class="step-title">4. NIKMATI CAMPING</h5>
                     <p class="text-muted small">Petualangan dimulai!</p>
@@ -398,14 +551,14 @@
         </div>
     </section>
 
-    <!-- STORY SECTION -->
+    <!-- STORY SECTION WITH BACKGROUND IMAGE -->
     <section class="story-section">
         <div class="container">
             <h2 class="story-headline text-center mb-5">
                 Rasakan <span class="text-primary">Kehangatan</span> di Puncak Tertinggi...
             </h2>
             
-            <div class="row align-items-center journey-flow">
+            <div class="row align-items-center justify-content-center">
                 <div class="col-md-2 text-center mb-3">
                     <div class="journey-icon">
                          <i class="fas fa-house-chimney fa-3x text-muted"></i>
@@ -424,15 +577,16 @@
                 <div class="col-md-1 text-center arrow-connector">
                     <i class="fas fa-chevron-right"></i>
                 </div>
-                <div class="col-md-4 text-center mb-3">
-                    <!-- GAMBAR STORY (Image 2) -->
-                    <img src="story-memasak-gunung.png" alt="Seseorang memasak di gunung" class="main-stove">
-                    <p class="mt-3 fw-bold text-primary">Momen Terbaik: Makan Hangat</p>
+                <div class="col-md-2 text-center mb-3">
+                    <div class="journey-icon">
+                         <i class="fas fa-fire fa-3x text-warning"></i>
+                         <p class="mt-2 fw-bold text-primary">Makan Hangat</p>
+                    </div>
                 </div>
                  <div class="col-md-1 text-center arrow-connector">
                     <i class="fas fa-chevron-right"></i>
                 </div>
-                 <div class="col-md-1 text-center mb-3">
+                 <div class="col-md-2 text-center mb-3">
                     <div class="journey-icon">
                          <i class="fas fa-tent fa-3x text-muted"></i>
                          <p class="mt-2 fw-bold">Camp</p>
@@ -454,7 +608,8 @@
                         Jl. Petualang No. 123, Jakarta Selatan.
                     </p>
                     <p class="small">
-                        <i class="fas fa-phone text-warning me-2"></i> +62 812 3456 7890
+                        <i class="fas fa-phone text-warning me-2"></i> 
+                        <a href="https://wa.me/6281226816221" style="color: #aaa; text-decoration: none;">081226816221</a>
                     </p>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
@@ -476,8 +631,8 @@
                 <div class="col-lg-3 col-md-6 mb-4 text-md-end">
                     <span class="footer-logo d-block mb-3">🔥 CAMPFIRE</span>
                     <div class="social-icons">
+                        <a href="https://wa.me/6281226816221" target="_blank"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-whatsapp"></i></a>
                         <a href="#"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
@@ -492,6 +647,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
+        // WhatsApp Number
+        const whatsappNumber = '6281226816221';
+
         // DATA PRODUK
         const products = [
             {
@@ -517,6 +675,7 @@
             const sliderImage = document.getElementById('slider-image');
             
             sliderImage.style.opacity = 0;
+            sliderImage.style.transform = 'scale(0.95)';
             
             setTimeout(() => {
                 sliderImage.src = product.image;
@@ -525,7 +684,8 @@
                 document.getElementById('slider-price').textContent = product.price;
                 document.getElementById('slider-desc').textContent = product.description;
                 sliderImage.style.opacity = 1;
-            }, 200);
+                sliderImage.style.transform = 'scale(1)';
+            }, 300);
         }
 
         function nextSlide() {
@@ -540,15 +700,57 @@
             updateSlider();
         }
 
-        document.getElementById('btnSearchNow').addEventListener('click', function() {
-            document.getElementById('best-deals-section').scrollIntoView({ 
-                behavior: 'smooth', 
-                block: 'start'
-            });
+        // Function to send WhatsApp message
+        function sendWhatsApp(productName = '') {
+            const location = document.getElementById('location')?.value || 'Tidak disebutkan';
+            const startDate = document.getElementById('startDate')?.value || 'Tidak disebutkan';
+            const startTime = document.getElementById('startTime')?.value || 'Tidak disebutkan';
+            const endDate = document.getElementById('endDate')?.value || 'Tidak disebutkan';
+            const endTime = document.getElementById('endTime')?.value || 'Tidak disebutkan';
+
+            let message = `Halo CampFire Gear! 👋
+
+Saya ingin menyewa kompor camping dengan detail berikut:`;
+
+            if (productName) {
+                message += `
+
+🔥 *Produk:* ${productName}`;
+            }
+
+            message += `
+
+📍 *Lokasi Pengambilan:* ${location}
+📅 *Tanggal Mulai:* ${startDate} ${startTime}
+📅 *Tanggal Selesai:* ${endDate} ${endTime}
+
+Mohon informasi lebih lanjut dan ketersediaan. Terima kasih! 🏕️`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Event listener for main order button
+        document.getElementById('btnOrder').addEventListener('click', function() {
+            sendWhatsApp();
         });
 
+        // Function to order specific product
+        function orderProduct() {
+            const product = products[currentSlideIndex];
+            sendWhatsApp(product.title);
+        }
+
         // Initialize slider saat halaman dimuat
-        document.addEventListener('DOMContentLoaded', updateSlider);
-    </script>
-</body>
-</html>
+        document.addEventListener('DOMContentLoaded', function() {
+            updateSlider();
+
+            // Scroll Animation Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries
