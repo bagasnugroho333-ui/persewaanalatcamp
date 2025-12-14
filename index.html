@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CampFire Gear - Sewa Kompor Camping</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <linkcdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
     <style>
         /* --- Kustomisasi CSS --- */
@@ -108,6 +108,14 @@
         #best-deals-section {
             padding: 60px 0;
         }
+        /* Agar gambar produk di slider ukurannya konsisten */
+        #slider-image {
+            max-height: 350px; 
+            width: auto;
+            max-width: 100%;
+            object-fit: contain; /* Menjaga proporsi gambar agar tidak gepeng */
+        }
+
         .slider-controls .btn {
             background-color: var(--primary-yellow);
             color: white;
@@ -154,6 +162,9 @@
         .journey-flow img.main-stove {
             max-width: 100%;
             height: auto;
+            /* Tambahan agar gambar story terlihat bagus */
+            max-height: 300px;
+            object-fit: cover;
         }
         .journey-icon img {
             width: 80px;
@@ -226,6 +237,7 @@
             .hero-badge { position: relative; margin: 0 auto 20px; top: 0; left: 0; }
             .reservation-box { margin-top: 30px; }
             .arrow-connector { transform: rotate(90deg); margin: 20px 0; }
+            #slider-image { max-height: 250px; } /* Perkecil sedikit di HP */
         }
     </style>
 </head>
@@ -256,7 +268,9 @@
                     <div class="hero-badge">NOW!</div>
                     <h2 class="hero-title mb-3">Reservasi Kompor Online Tersedia</h2>
                     <h3 class="hero-highlight mb-4">Hemat hingga 40% untuk Petualangan Camping Anda Berikutnya!</h3>
-                    <img src="https://images.unsplash.com/photo-1595596667377-8361d386b130?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Portable Camping Stove di Alam" class="img-fluid rounded shadow-lg mb-4">
+                    
+                    <img src="hero-kompor-utama.png" alt="Suasana memasak camping di hutan dengan kompor portable" class="img-fluid rounded shadow-lg mb-4">
+                    
                     <p class="text-muted">
                         Nikmati kemudahan memasak di alam terbuka tanpa ribet. Kami menyediakan berbagai jenis kompor portable berkualitas tinggi yang siap menemani perjalanan camping Anda. Praktis, aman, dan hemat bahan bakar. Pesan sekarang dan buat pengalaman camping Anda tak terlupakan.
                     </p>
@@ -300,7 +314,6 @@
                                     <option selected>Semua Jenis</option>
                                     <option>Ultralight (Solo)</option>
                                     <option>Portable Gas (Keluarga)</option>
-                                    <option>Wood Stove (Kayu Bakar)</option>
                                 </select>
                             </div>
                             <button type="button" class="btn btn-search" id="btnSearchNow">Cari Sekarang</button>
@@ -313,23 +326,29 @@
 
     <section id="best-deals-section">
         <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Pilihan <span class="text-primary">Terbaik</span> Kami</h2>
+                <p class="text-muted">Geser untuk melihat jenis kompor yang tersedia</p>
+            </div>
+
             <div class="row align-items-center" id="product-slider-container">
-                <div class="col-md-6 mb-4 mb-md-0 text-center">
-                    <img id="slider-image" src="" alt="Kompor" class="img-fluid rounded shadow-sm" style="max-height: 300px;">
+                <div class="col-md-6 mb-4 mb-md-0 text-center bg-light p-4 rounded">
+                    <img id="slider-image" src="" alt="Kompor" class="img-fluid rounded shadow-sm">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 ps-md-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="text-uppercase text-muted mb-0" id="slider-category">Kategori</h6>
+                        <h6 class="text-uppercase text-muted mb-0 fw-bold" id="slider-category">Kategori</h6>
                         <div class="slider-controls">
                             <button class="btn btn-sm" onclick="prevSlide()"><i class="fas fa-chevron-left"></i></button>
                             <button class="btn btn-sm" onclick="nextSlide()"><i class="fas fa-chevron-right"></i></button>
                         </div>
                     </div>
-                    <h3 class="fw-bold text-primary" id="slider-title">Nama Produk</h3>
+                    <h3 class="fw-bold" style="color: var(--dark-bg);" id="slider-title">Nama Produk</h3>
                     <p class="deal-price mb-3">
-                        <span id="slider-price">Rp 0</span> <span class="text-muted small">/ Hari</span>
+                        <span id="slider-price">Rp 0</span> <span class="text-muted small" style="color: #666 !important;">/ Hari</span>
                     </p>
                     <p class="text-muted" id="slider-desc">Deskripsi produk akan muncul di sini.</p>
+                    <button class="btn btn-warning mt-3 fw-bold">Sewa Unit Ini</button>
                 </div>
             </div>
         </div>
@@ -339,25 +358,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle">
+                    <div class="step-circle shadow-sm">
                         <i class="fas fa-search"></i>
                     </div>
                     <h5 class="step-title">1. PILIH ALAT</h5>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle">
+                    <div class="step-circle shadow-sm">
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <h5 class="step-title">2. PESAN ONLINE</h5>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle">
+                    <div class="step-circle shadow-sm">
                         <i class="fas fa-route"></i>
                     </div>
                     <h5 class="step-title">3. AMBIL / ANTAR</h5>
                 </div>
                 <div class="col-md-3 col-6 mb-4">
-                    <div class="step-circle">
+                    <div class="step-circle shadow-sm">
                         <i class="fas fa-mountain-sun"></i>
                     </div>
                     <h5 class="step-title">4. NIKMATI CAMPING</h5>
@@ -369,14 +388,14 @@
     <section class="story-section">
         <div class="container">
             <h2 class="story-headline text-center mb-5">
-                Cara Mudah Menikmati <span class="text-primary">Masakan Hangat</span> di Alam Terbuka...
+                Rasakan <span class="text-primary">Kehangatan</span> di Puncak Tertinggi...
             </h2>
             
             <div class="row align-items-center journey-flow">
                 <div class="col-md-2 text-center mb-3">
                     <div class="journey-icon">
                          <i class="fas fa-house-chimney fa-3x text-muted"></i>
-                         <p class="mt-2 fw-bold">Dari Rumah</p>
+                         <p class="mt-2 fw-bold">Persiapan</p>
                     </div>
                 </div>
                 <div class="col-md-1 text-center arrow-connector">
@@ -385,15 +404,15 @@
                 <div class="col-md-2 text-center mb-3">
                      <div class="journey-icon">
                         <i class="fas fa-user-hiking fa-3x text-muted"></i>
-                        <p class="mt-2 fw-bold">Siap Berangkat</p>
+                        <p class="mt-2 fw-bold">Perjalanan</p>
                    </div>
                 </div>
                 <div class="col-md-1 text-center arrow-connector">
                     <i class="fas fa-chevron-right"></i>
                 </div>
                 <div class="col-md-4 text-center mb-3">
-                    <img src="https://images.unsplash.com/photo-1497323996236-c37e0e36143f?q=80&w=600&auto=format&fit=crop" alt="Memasak di gunung" class="main-stove rounded shadow">
-                     <p class="mt-3 fw-bold text-primary">Masak Nyaman di Gunung</p>
+                    <img src="story-memasak-gunung.png" alt="Seseorang memasak di gunung dengan pemandangan danau" class="main-stove rounded shadow">
+                     <p class="mt-3 fw-bold text-primary">Momen Terbaik: Makan Hangat dengan Pemandangan</p>
                 </div>
                  <div class="col-md-2 text-center arrow-connector">
                     <i class="fas fa-chevron-right"></i>
@@ -401,7 +420,7 @@
                  <div class="col-md-2 text-center mb-3">
                     <div class="journey-icon">
                          <i class="fas fa-tent fa-3x text-muted"></i>
-                         <p class="mt-2 fw-bold">Camping Bahagia</p>
+                         <p class="mt-2 fw-bold">Istirahat Nyaman</p>
                     </div>
                 </div>
             </div>
@@ -459,23 +478,23 @@
     <script>
         // --- 1. FUNGSI SLIDER PRODUK ("Best Deals") ---
 
-        // Data Produk Kompor (Array of Objects)
+        // Data Produk Kompor (Diupdate dengan Nama File Gambar Lokal Anda)
         const products = [
             {
-                category: "ULTRALIGHT GEAR",
-                title: "Paket Solo Hiker (Kompor Mini)",
-                price: "Rp 25.000",
-                description: "Kompor ultralight yang sangat ringan, cocok untuk pendaki solo. Termasuk 1 tabung gas mini dan nesting (panci kecil). Hemat tempat di carrier Anda.",
-                // Gambar stok gratis dari Unsplash
-                image: "https://images.unsplash.com/photo-1587536719333-531748681753?q=80&w=800&auto=format&fit=crop"
+                category: "ULTRALIGHT GEAR (SOLO)",
+                title: "Paket Kompor JetPower Ultralight",
+                price: "Rp 35.000",
+                description: "Sangat ringan dan ringkas. Ideal untuk pendaki solo atau berdua yang mengutamakan kecepatan dan efisiensi packing. Menggunakan gas canister ulir (lindal valve).",
+                // GAMBAR PRODUK 1 DIUBAH DISINI (Image 3)
+                image: "produk-ultralight-stove.png" 
             },
             {
-                category: "FAMILY CAMPING",
-                title: "Kompor Portable Double Burner",
-                price: "Rp 60.000",
-                description: "Masak lebih cepat untuk keluarga besar dengan dua tungku. Menggunakan gas kaleng portable standar. Stabil, aman, dan mudah dibersihkan.",
-                // Gambar stok gratis lain
-                image: "https://m.media-amazon.com/images/I/71P+jA4+3ZL._AC_UF1000,1000_QL80_.jpg" 
+                category: "FAMILY / GROUP CAMPING",
+                title: "Kompor Portable Gas Barron",
+                price: "Rp 50.000",
+                description: "Kompor model koper yang stabil dan mudah digunakan. Cocok untuk memasak dengan panci besar saat camping keluarga atau di area camping ground. Menggunakan gas kaleng hi-cook.",
+                // GAMBAR PRODUK 2 DIUBAH DISINI (Image 2)
+                image: "produk-family-stove.png" 
             }
         ];
 
@@ -484,12 +503,25 @@
         // Fungsi untuk memperbarui tampilan slider berdasarkan index saat ini
         function updateSlider() {
             const product = products[currentSlideIndex];
-            document.getElementById('slider-image').src = product.image;
-            document.getElementById('slider-category').textContent = product.category;
-            document.getElementById('slider-title').textContent = product.title;
-            document.getElementById('slider-price').textContent = product.price;
-            document.getElementById('slider-desc').textContent = product.description;
+            const sliderImage = document.getElementById('slider-image');
+            
+            // Efek fade-out sederhana sebelum ganti gambar
+            sliderImage.style.opacity = 0;
+
+            setTimeout(() => {
+                sliderImage.src = product.image;
+                document.getElementById('slider-category').textContent = product.category;
+                document.getElementById('slider-title').textContent = product.title;
+                document.getElementById('slider-price').textContent = product.price;
+                document.getElementById('slider-desc').textContent = product.description;
+                // Efek fade-in
+                sliderImage.style.opacity = 1;
+            }, 200); // jeda 200ms agar transisi terasa halus
         }
+        
+        // Tambahkan transisi CSS ke gambar slider agar halus
+        document.getElementById('slider-image').style.transition = 'opacity 0.3s ease-in-out';
+
 
         // Fungsi Tombol Berikutnya (Next)
         function nextSlide() {
