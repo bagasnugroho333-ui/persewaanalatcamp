@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Landing Page</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. RESET & VARIABLE CSS --- */
+        :root {
+            --bg-color: #1A1A2E;       /* Warna Background Gelap */
+            --accent-color: #8C52FF;   /* Warna Ungu Neon */
+            --text-color: #FFFFFF;
+            --text-muted: #B0B0B0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --border-radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden; /* Mencegah scroll horizontal */
+        }
+
+        a { text-decoration: none; color: white; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- 2. NAVBAR SECTION --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: transparent; /* Bisa diganti jika ingin solid */
+            position: relative;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .user-actions {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- 3. HERO SECTION (Main Content) --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh; /* Hampir satu layar penuh */
+            padding: 0 8%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Bagian Kiri: Teks & Form */
+        .hero-content {
+            flex: 1;
+            z-index: 10;
+            padding-right: 50px;
+        }
+
+        .hero-subtitle {
+            color: var(--text-muted);
+            border-left: 3px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+        .hero-title span { color: var(--accent-color); }
+
+        /* Styling Form Pencarian */
+        .search-container {
+            background: var(--glass-bg);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #555;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-search {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+            box-shadow: 0 0 15px rgba(140, 82, 255, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .btn-search:hover {
+            transform: scale(1.02);
+            background-color: #7b42e6;
+        }
+
+        /* Bagian Kanan: Gambar Placeholder Mobil */
+        .hero-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Placeholder untuk Gambar Mobil */
+        .car-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            background-color: #333;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #777;
+            font-size: 1.2rem;
+            border: 2px dashed #555;
+            
+            /* Animasi Melayang (Floating) */
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Efek Dekorasi Neon di belakang mobil */
+        .glow-effect {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(140,82,255,0.3) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* --- 4. KEYFRAME ANIMATIONS --- */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* --- 5. RESPONSIVE MEDIA QUERIES (Mobile) --- */
+        @media (max-width: 968px) {
+            .navbar {
+                padding: 20px 5%;
+            }
+            .nav-links {
+                display: none; /* Menyembunyikan menu di HP agar simpel */
+            }
+            .hero {
+                flex-direction: column-reverse; /* Form di bawah, Gambar di atas */
+                padding: 40px 5%;
+                min-height: auto;
+                text-align: center;
+            }
+            .hero-content {
+                padding-right: 0;
+                width: 100%;
+                margin-top: 30px;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .hero-subtitle {
+                display: inline-block; /* Agar border kiri pas saat center align */
+            }
+            .car-placeholder {
+                height: 250px;
+                width: 90%;
+            }
+            .form-row {
+                flex-direction: column; /* Input tanggal jadi menumpuk di HP */
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <div style="width:30px; height:30px; background:#8C52FF; border-radius:50%;"></div>
+            YouRent
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Manage Booking</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="user-actions">
+            ID | EN
+        </div>
+    </nav>
+
+    <section class="hero">
+        
+        <div class="hero-content">
+            <h4 class="hero-subtitle">Search your</h4>
+            <h1 class="hero-title">Rental <span>Cars</span></h1>
+
+            <div class="search-container">
+                <div class="form-group">
+                    <label>Pickup Location</label>
+                    <input type="text" id="locationInput" class="form-input" placeholder="Select a Pickup Address" value="Jakarta Pusat">
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group" style="flex:1;">
+                        <label>Pickup Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                    <div class="form-group" style="flex:1;">
+                        <label>Dropoff Date</label>
+                        <input type="date" class="form-input">
+                    </div>
+                </div>
+
+                <button onclick="goToStore()" class="btn-search">SEARCH</button>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="glow-effect"></div>
+            <div class="car-placeholder">
+                [IMAGE PLACEHOLDER: 600x350px Car PNG]
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function goToStore() {
+            // 1. Ambil nilai lokasi (opsional, jika ingin dinamis)
+            const location = document.getElementById('locationInput').value;
+
+            // 2. Tentukan koordinat atau link Google Maps Toko Offline Anda
+            // Ganti link di bawah ini dengan Link Google Maps Toko Anda yang asli
+            // Contoh format pencarian: https://www.google.com/maps/search/?api=1&query=Rental+Mobil+Jakarta
+            // Contoh format lokasi spesifik: https://goo.gl/maps/CONTOH_ID_MAPS
+            
+            const storeLink = "https://www.google.com/maps/search/?api=1&query=Rental+Mobil+" + encodeURIComponent(location);
+            
+            // 3. Buka di tab baru
+            window.open(storeLink, '_blank');
+        }
+    </script>
+
+</body>
+</html>
